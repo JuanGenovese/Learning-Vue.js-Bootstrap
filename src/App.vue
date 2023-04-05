@@ -1,48 +1,60 @@
 <script setup>
+  import { ref , computed} from "vue";
+  
 
-import { ref , computed} from "vue";
 
-let counter = ref(0);
-const favoritos = ref([]);
+  let counter = ref(0);
+  const favoritos = ref([]);
+  
 
-const increment = () => {
-  counter.value++;
-};
 
-const reduce = () => {
-  counter.value--;
-};
+  const increment = () => {
+    counter.value++;
+  };
+  
 
-const reset = () => {
-  counter.value = 0;
-};
 
-const classCounter = computed(() => {
-  if(counter.value === 0){
-    return "zero"
-  }
-  if(counter.value > 0){
-    return "positive"
-  }
-  if(counter.value){
-    return "negative"
-  }
-});
+  const reduce = () => {
+    counter.value--;
+  };
+  
 
-const add = () => {
-  favoritos.value.push(counter.value);
-};
 
-const addButton = computed(() => {
-  const numSearch = favoritos.value.find(num => num === counter.value);
-  if(numSearch || numSearch === 0){
-    return true;
-  }
-  else{
-    return false;
-  }
-});
+  const reset = () => {
+    counter.value = 0;
+  };
+  
 
+
+  const classCounter = computed(() => {
+    if(counter.value === 0){
+      return "zero"
+    }
+    if(counter.value > 0){
+      return "positive"
+    }
+    if(counter.value){
+      return "negative"
+    }
+  });
+  
+
+
+  const add = () => {
+    favoritos.value.push(counter.value);
+  };
+  
+
+
+  const addButton = computed(() => {
+    const numSearch = favoritos.value.find(num => num === counter.value);
+    if(numSearch || numSearch === 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
 </script>
 
 
@@ -74,14 +86,12 @@ const addButton = computed(() => {
         </li>
       </ul>
     </div>
-    
   </div>
 </template> 
 
 
 
 <style>
-
 .caja{
   padding-top: 200px;
 }
@@ -95,8 +105,6 @@ const addButton = computed(() => {
   display: flex;
   justify-content: center;
 }
-
-
 .positive {
   color: green;
 }
